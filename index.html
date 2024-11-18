@@ -60,67 +60,8 @@
   <div class="results" id="results"></div>
 </div>
 
-<script>
-  const namesDatabase = {
-    "John": { "variants": ["John (English)", "Jean (French)", "Juan (Spanish)", "Giovanni (Italian)", "Johann (German)", "Иван [Ivan] (Russian)", "Ιωάννης [Ioannis] (Greek)", "يحيى [Yahya] (Arabic)"], "origin": "english" },
-    "Mary": { "variants": ["Mary (English)", "Marie (French)", "María (Spanish)", "Maria (Italian)", "Мария [Mariya] (Russian)", "Μαρία [Maria] (Greek)", "مريم [Maryam] (Arabic)"], "origin": "hebrew" },
-    "Michael": { "variants": ["Michael (English)", "Michel (French)", "Miguel (Spanish)", "Michele (Italian)", "Михаил [Mikhail] (Russian)", "Μιχαήλ [Mikhail] (Greek)", "ميخائيل [Mikhail] (Arabic)"], "origin": "hebrew" },
-    "Elizabeth": { "variants": ["Elizabeth (English)", "Élisabeth (French)", "Isabel (Spanish)", "Elisabetta (Italian)", "Елизавета [Elizaveta] (Russian)", "Ελισάβετ [Elisavet] (Greek)", "إليزابيث [Elizabith] (Arabic)"], "origin": "hebrew" },
-    "William": { "variants": ["William (English)", "Guillaume (French)", "Guillermo (Spanish)", "Guglielmo (Italian)", "Вильгельм [Vilgelm] (Russian)", "Ουίλιαμ [Ouiliam] (Greek)", "وليام [Wiliam] (Arabic)"], "origin": "germanic" },
-    "Catherine": { "variants": ["Catherine (English)", "Catherine (French)", "Catalina (Spanish)", "Caterina (Italian)", "Екатерина [Yekaterina] (Russian)", "Αικατερίνη [Aikaterini] (Greek)", "كاثرين [Kathrin] (Arabic)"], "origin": "greek" },
-    "Alexander": { "variants": ["Alexander (English)", "Alexandre (French)", "Alejandro (Spanish)", "Alessandro (Italian)", "Александр [Aleksandr] (Russian)", "Αλέξανδρος [Alexandros] (Greek)", "إسكندر [Iskandar] (Arabic)"], "origin": "greek" },
-    "Peter": { "variants": ["Peter (English)", "Pierre (French)", "Pedro (Spanish)", "Pietro (Italian)", "Пётр [Pyotr] (Russian)", "Πέτρος [Petros] (Greek)", "بطرس [Butrus] (Arabic)"], "origin": "greek" },
-    "Anna": { "variants": ["Anna (English)", "Anne (French)", "Ana (Spanish)", "Анна [Anna] (Russian)", "Άννα [Anna] (Greek)", "آنا [Ana] (Arabic)"], "origin": "hebrew" },
-    "James": { "variants": ["James (English)", "Jacques (French)", "Santiago (Spanish)", "Giacomo (Italian)", "Яков [Yakov] (Russian)", "Ιάκωβος [Iakovos] (Greek)", "يعقوب [Yaqub] (Arabic)"], "origin": "hebrew" }
-  };
-
-  function searchNameVariant() {
-    const input = document.getElementById("nameInput").value.trim().toLowerCase();
-    const resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = "";
-
-    for (const [key, value] of Object.entries(namesDatabase)) {
-      if (key.toLowerCase().startsWith(input) || value.variants.some(variant => variant.toLowerCase().startsWith(input))) {
-        const nameCard = document.createElement("div");
-        nameCard.classList.add("name-card");
-
-        value.variants.forEach(variant => {
-          const variantElement = document.createElement("div");
-          variantElement.classList.add("name-variant");
-          variantElement.textContent = `- ${variant}`;
-          nameCard.appendChild(variantElement);
-        });
-
-        resultsContainer.appendChild(nameCard);
-      }
-    }
-  }
-
-  function displayAllNames() {
-    const allNamesContainer = document.getElementById("results");
-    allNamesContainer.innerHTML = "";
-
-    for (const [key, value] of Object.entries(namesDatabase)) {
-      const nameCard = document.createElement("div");
-      nameCard.classList.add("name-card");
-
-      value.variants.forEach(variant => {
-        const variantElement = document.createElement("div");
-        variantElement.classList.add("name-variant");
-        variantElement.textContent = `${variant}`;
-        nameCard.appendChild(variantElement);
-      });
-
-      allNamesContainer.appendChild(nameCard);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const nameInput = document.getElementById("nameInput");
-    displayAllNames();
-    nameInput.addEventListener("input", searchNameVariant);
-  });
-</script>
+<script src="name_variants.js" type="module"></script>
+<script src="scripts.js" type="module"></script>
 
 </body>
 </html>

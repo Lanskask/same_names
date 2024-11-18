@@ -1,13 +1,12 @@
 export const namesDatabase = {
-    "John": ["John", "Jean", "Juan", "Giovanni", "Johann", "Иван", "Ιωάννης", "يحيى"],
-    "Mary": ["Mary", "Marie", "María", "Maria", "Мария", "Μαρία", "مريم"],
-    "Michael": ["Michael", "Michel", "Miguel", "Michele", "Михаил", "Μιχαήλ", "ميخائيل"],
-    "Elizabeth": ["Elizabeth", "Élisabeth", "Isabel", "Elisabetta", "Елизавета", "Ελισάβετ", "إليزابيث"],
-    "William": ["William", "Guillaume", "Guillermo", "Guglielmo", "Вильгельм", "Ουίλιαμ", "وليام"],
-    "Catherine": ["Catherine", "Catherine", "Catalina", "Caterina", "Екатерина", "Αικατερίνη", "كاثرين"],
-    "Alexander": ["Alexander", "Alexandre", "Alejandro", "Alessandro", "Александр", "Αλέξανδρος", "إسكندر"],
-    "Peter": ["Peter", "Pierre", "Pedro", "Pietro", "Пётр", "Πέτρος", "بطرس"],
-    "Anna": ["Anna", "Anne", "Ana", "Анна", "Άννα", "آنا"],
-    "James": ["James", "Jacques", "Santiago", "Giacomo", "Яков", "Ιάκωβος", "يعقوب"]
+    "John": { "variants": ["John (English)", "Jean (French)", "Juan (Spanish)", "Giovanni (Italian)", "Johann (German)", "Иван [Ivan] (Russian)", "Ιωάννης [Ioannis] (Greek)", "يحيى [Yahya] (Arabic)"], "origin": "english" },
+    "Mary": { "variants": ["Mary (English)", "Marie (French)", "María (Spanish)", "Maria (Italian)", "Мария [Mariya] (Russian)", "Μαρία [Maria] (Greek)", "مريم [Maryam] (Arabic)"], "origin": "hebrew" },
+    "Michael": { "variants": ["Michael (English)", "Michel (French)", "Miguel (Spanish)", "Michele (Italian)", "Михаил [Mikhail] (Russian)", "Μιχαήλ [Mikhail] (Greek)", "ميخائيل [Mikhail] (Arabic)"], "origin": "hebrew" },
+    "Elizabeth": { "variants": ["Elizabeth (English)", "Élisabeth (French)", "Isabel (Spanish)", "Elisabetta (Italian)", "Елизавета [Elizaveta] (Russian)", "Ελισάβετ [Elisavet] (Greek)", "إليزابيث [Elizabith] (Arabic)"], "origin": "hebrew" },
+    "William": { "variants": ["William (English)", "Guillaume (French)", "Guillermo (Spanish)", "Guglielmo (Italian)", "Вильгельм [Vilgelm] (Russian)", "Ουίλιαμ [Ouiliam] (Greek)", "وليام [Wiliam] (Arabic)"], "origin": "germanic" },
+    "Catherine": { "variants": ["Catherine (English)", "Catherine (French)", "Catalina (Spanish)", "Caterina (Italian)", "Екатерина [Yekaterina] (Russian)", "Αικατερίνη [Aikaterini] (Greek)", "كاثرين [Kathrin] (Arabic)"], "origin": "greek" },
+    "Alexander": { "variants": ["Alexander (English)", "Alexandre (French)", "Alejandro (Spanish)", "Alessandro (Italian)", "Александр [Aleksandr] (Russian)", "Αλέξανδρος [Alexandros] (Greek)", "إسكندر [Iskandar] (Arabic)"], "origin": "greek" },
+    "Peter": { "variants": ["Peter (English)", "Pierre (French)", "Pedro (Spanish)", "Pietro (Italian)", "Пётр [Pyotr] (Russian)", "Πέτρος [Petros] (Greek)", "بطرس [Butrus] (Arabic)"], "origin": "greek" },
+    "Anna": { "variants": ["Anna (English)", "Anne (French)", "Ana (Spanish)", "Анна [Anna] (Russian)", "Άννα [Anna] (Greek)", "آنا [Ana] (Arabic)"], "origin": "hebrew" },
+    "James": { "variants": ["James (English)", "Jacques (French)", "Santiago (Spanish)", "Giacomo (Italian)", "Яков [Yakov] (Russian)", "Ιάκωβος [Iakovos] (Greek)", "يعقوب [Yaqub] (Arabic)"], "origin": "hebrew" }
 };
-
