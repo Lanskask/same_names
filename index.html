@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Variant Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .results {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .name-card {
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+    }
+    .name-card h2 {
+      margin-top: 0;
+    }
+    .name-variant {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="search-container">
+  <h1>Name Variant Search</h1>
+  <p>Enter a name or variant (e.g., John, Иван, مريم) to find its versions in different languages:</p>
+
+  <label for="nameInput"></label>
+  <input type="text" id="nameInput" placeholder="Enter a name...">
+
+  <div class="results" id="results"></div>
+</div>
+
+<script>
+  const namesDatabase = {
+    "John": { "variants": ["John", "Jean", "Juan", "Giovanni", "Johann", "Иван (Ivan)", "Ιωάννης (Ioannis)", "يحيى (Yahya)"], "origin": "english" },
+    "Mary": { "variants": ["Mary", "Marie", "María", "Maria", "Мария (Mariya)", "Μαρία (Maria)", "مريم (Maryam)"], "origin": "hebrew" },
+    "Michael": { "variants": ["Michael", "Michel", "Miguel", "Michele", "Михаил (Mikhail)", "Μιχαήλ (Mikhail)", "ميخائيل (Mikhail)"], "origin": "hebrew" },
+    "Elizabeth": { "variants": ["Elizabeth", "Élisabeth", "Isabel", "Elisabetta", "Елизавета (Elizaveta)", "Ελισάβετ (Elisavet)", "إليزابيث (Elizabith)"], "origin": "hebrew" },
+    "William": { "variants": ["William", "Guillaume", "Guillermo", "Guglielmo", "Вильгельм (Vilgelm)", "Ουίλιαμ (Ouiliam)", "وليام (Wiliam)"], "origin": "germanic" },
+    "Catherine": { "variants": ["Catherine", "Catherine", "Catalina", "Caterina", "Екатерина (Yekaterina)", "Αικατερίνη (Aikaterini)", "كاثرين (Kathrin)"], "origin": "greek" },
+    "Alexander": { "variants": ["Alexander", "Alexandre", "Alejandro", "Alessandro", "Александр (Aleksandr)", "Αλέξανδρος (Alexandros)", "إسكندر (Iskandar)"], "origin": "greek" },
+    "Peter": { "variants": ["Peter", "Pierre", "Pedro", "Pietro", "Пётр (Pyotr)", "Πέτρος (Petros)", "بطرس (Butrus)"], "origin": "greek" },
+    "Anna": { "variants": ["Anna", "Anne", "Ana", "Анна (Anna)", "Άννα (Anna)", "آنا (Ana)"], "origin": "hebrew" },
+    "James": { "variants": ["James", "Jacques", "Santiago", "Giacomo", "Яков (Yakov)", "Ιάκωβος (Iakovos)", "يعقوب (Yaqub)"], "origin": "hebrew" }
+  };
+
+  function searchNameVariant() {
+    console.log("searchNameVariant function called");
+    const input = document.getElementById("nameInput").value.trim().toLowerCase();
+    console.log("User input:", input);
+    const resultsContainer = document.getElementById("results");
+    resultsContainer.innerHTML = "";
+
+    for (const [key, value] of Object.entries(namesDatabase)) {
+      console.log("Checking name:", key);
+      if (key.toLowerCase().includes(input) || value.variants.some(variant => variant.toLowerCase().includes(input))) {
+        console.log("Match found for:", key);
+        const nameCard = document.createElement("div");
+        nameCard.classList.add("name-card");
+
+        const nameTitle = document.createElement("h2");
+        nameTitle.textContent = key + ` (${value.origin})`;
+        nameCard.appendChild(nameTitle);
+
+        value.variants.filter(variant => variant.toLowerCase().includes(input)).forEach(variant => {
+          console.log("Adding variant:", variant);
+          const variantElement = document.createElement("div");
+          variantElement.classList.add("name-variant");
+          variantElement.textContent = `- ${variant}`;
+          nameCard.appendChild(variantElement);
+        });
+
+        resultsContainer.appendChild(nameCard);
+      }
+    }
+  }
+
+  function displayAllNames() {
+    console.log("displayAllNames function called");
+    const allNamesContainer = document.getElementById("results");
+    allNamesContainer.innerHTML = "";
+
+    for (const [key, value] of Object.entries(namesDatabase)) {
+      console.log("Displaying name:", key);
+      const nameCard = document.createElement("div");
+      nameCard.classList.add("name-card");
+
+      const nameTitle = document.createElement("h2");
+      nameTitle.textContent = key + ` (${value.origin})`;
+      nameCard.appendChild(nameTitle);
+
+      value.variants.forEach(variant => {
+        console.log("Adding variant for display:", variant);
+        const variantElement = document.createElement("div");
+        variantElement.classList.add("name-variant");
+        variantElement.textContent = `- ${variant}`;
+        nameCard.appendChild(variantElement);
+      });
+
+      allNamesContainer.appendChild(nameCard);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded event fired");
+    const nameInput = document.getElementById("nameInput");
+    displayAllNames();
+    nameInput.addEventListener("input", searchNameVariant);
+  });
+</script>
+
+</body>
+</html>
